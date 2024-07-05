@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvih1dp7xwj5m"]
+
+[ext_resource type="Script" path="res://addons/animationrestposconverter/rest_pose_binder.gd" id="1_ehshh"]
+
+[node name="RestPoseBinder" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 70.0
+offset_right = 1152.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ehshh")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Directory" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Animations Directory"
+
+[node name="FolderBtn" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Locate"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RestPosePath" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Rest Pose Path"
+editable = false
+
+[node name="AnimationBtn" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Locate"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Bind"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a Directory"
+ok_button_text = "Select Current Folder"
+file_mode = 2
+use_native_dialog = true
+
+[node name="ResPosPathDialog" type="FileDialog" parent="."]
+auto_translate_mode = 1
+title = "Open a File"
+size = Vector2i(207, 175)
+ok_button_text = "Open"
+file_mode = 0
+filters = PackedStringArray("*.res")
+use_native_dialog = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/FolderBtn" to="." method="_on_folder_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/AnimationBtn" to="." method="_on_animation_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="dir_selected" from="FileDialog" to="." method="_on_file_dialog_dir_selected"]
+[connection signal="file_selected" from="ResPosPathDialog" to="." method="_on_res_pos_path_dialog_file_selected"]
