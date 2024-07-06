@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cvih1dp7xwj5m"]
 
-[ext_resource type="Script" path="res://addons/animationrestposconverter/rest_pose_binder.gd" id="1_ehshh"]
+[ext_resource type="Script" path="res://addons/rest_pose_binder/binder.gd" id="1_ehshh"]
 
 [node name="RestPoseBinder" type="Control"]
 layout_mode = 3

@@ -4,7 +4,7 @@ extends EditorPlugin
 var panel
 
 func _enter_tree() -> void:
-	panel = preload("res://addons/animationrestposconverter/panel.tscn").instantiate()
+	panel = preload("res://addons/rest_pose_binder/panel.tscn").instantiate()
 	
 	add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_UL, panel)
 

@@ -20,4 +20,4 @@ project/assembly_name="AnimationRestImporter"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/animationrestposconverter/plugin.cfg")
+enabled=PackedStringArray("res://addons/rest_pose_binder/plugin.cfg")
