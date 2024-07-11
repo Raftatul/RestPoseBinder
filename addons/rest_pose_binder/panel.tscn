@@ -2,15 +2,17 @@
 
 [ext_resource type="Script" path="res://addons/rest_pose_binder/binder.gd" id="1_ehshh"]
 
-[node name="RestPoseBinder" type="Control"]
+[node name="RestPoseBinder" type="Control" node_paths=PackedStringArray("directory_path_input", "animation_path_input", "tree")]
 layout_mode = 3
-anchors_preset = 0
-offset_top = 70.0
-offset_right = 1152.0
-offset_bottom = 70.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ehshh")
+directory_path_input = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Directory")
+animation_path_input = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/RestPosePath")
+tree = NodePath("MarginContainer/VBoxContainer/Tree")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -31,7 +33,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Directory" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Animations Directory"
@@ -60,6 +61,14 @@ text = "Locate"
 layout_mode = 2
 text = "Bind"
 
+[node name="RefreshTreeBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Refresh Tree"
+
+[node name="Tree" type="Tree" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="FileDialog" type="FileDialog" parent="."]
 title = "Open a Directory"
 ok_button_text = "Select Current Folder"
@@ -78,5 +87,8 @@ use_native_dialog = true
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/FolderBtn" to="." method="_on_folder_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/AnimationBtn" to="." method="_on_animation_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/RefreshTreeBtn" to="." method="_on_refresh_tree_btn_pressed"]
+[connection signal="check_propagated_to_item" from="MarginContainer/VBoxContainer/Tree" to="." method="_on_tree_check_propagated_to_item"]
+[connection signal="item_edited" from="MarginContainer/VBoxContainer/Tree" to="." method="_on_tree_item_edited"]
 [connection signal="dir_selected" from="FileDialog" to="." method="_on_file_dialog_dir_selected"]
 [connection signal="file_selected" from="ResPosPathDialog" to="." method="_on_res_pos_path_dialog_file_selected"]
