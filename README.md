@@ -1,5 +1,6 @@
 # How to use
 After activating the addon, go to the RestPoseBinder panel, then locate the folder with the animations you want to bind (Child folders will be taken into account). Next, locate the animation. Then press bind !
 
-![image](https://github.com/Raftatul/RestPoseBinder/assets/80292778/ede268fa-172b-4c96-adb7-d6efeff9e131)
+![image](https://github.com/Raftatul/RestPoseBinder/assets/80292778/08a5921d-cdd2-45d1-8209-3f30fd40d945)
+
 
